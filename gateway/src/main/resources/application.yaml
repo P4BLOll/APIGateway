@@ -1,0 +1,24 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: gateway
+
+  cloud:
+    compatibility-verifier:
+      enabled: false
+    gateway:
+      routes:
+        - id: api-pablo
+          uri: http://localhost:8081
+          predicates:
+            - Path=/pablo/teste**
+        - id: api-pedro
+          uri: http://localhost:8082
+          predicates:
+            - Path=/pedro/teste**
+
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
